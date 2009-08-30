@@ -11,10 +11,10 @@ Contents:
 
   case/index.rst
   
-..  di/index.rst
-..  di/index2.rst
-..  si/index.rst  
-..  faq/index.rst  
+  di/index.rst
+  di/index2.rst
+  si/index.rst  
+  faq/index.rst  
   
 Indices and tables
 ==================
