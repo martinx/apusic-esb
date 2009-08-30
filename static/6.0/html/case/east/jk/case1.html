@@ -1,0 +1,431 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>建坤演示案例一：世博信号设备控制数据集成 &mdash; AESB v6.0 documentation</title>
+    <link rel="stylesheet" href="../../../_static/sphinxdoc.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../',
+        VERSION:     '6.0',
+        COLLAPSE_MODINDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../_static/doctools.js"></script>
+    <link rel="top" title="AESB v6.0 documentation" href="../../../index.html" />
+    <link rel="up" title="建坤演示案例" href="index.html" />
+    <link rel="prev" title="建坤演示案例" href="index.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="index.html" title="建坤演示案例"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../../../index.html">AESB v6.0 documentation</a> &raquo;</li>
+          <li><a href="../../index.html" >客户案例[演示]集合</a> &raquo;</li>
+          <li><a href="../index.html" >华东客户案例演示集</a> &raquo;</li>
+          <li><a href="index.html" accesskey="U">建坤演示案例</a> &raquo;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+            <h3><a href="../../../index.html">Table Of Contents</a></h3>
+            <ul>
+<li><a class="reference external" href="">建坤演示案例一：世博信号设备控制数据集成</a><ul>
+<li><a class="reference external" href="#id2">场景描述</a></li>
+<li><a class="reference external" href="#id3">环境准备</a><ul>
+<li><a class="reference external" href="#aesb-designer">AESB 及其 Designer</a></li>
+<li><a class="reference external" href="#id4">数据库</a></li>
+<li><a class="reference external" href="#id5">客户端模拟测试</a></li>
+</ul>
+</li>
+<li><a class="reference external" href="#id6">操作详情</a><ul>
+<li><a class="reference external" href="#id7">配置环境</a></li>
+<li><a class="reference external" href="#id8">流程绘制</a></li>
+<li><a class="reference external" href="#id9">全局参数</a></li>
+<li><a class="reference external" href="#id10">接收结点</a></li>
+<li><a class="reference external" href="#id11">赋值结点</a></li>
+<li><a class="reference external" href="#id12">分支合并</a></li>
+<li><a class="reference external" href="#id13">计算当前时间表达式</a></li>
+<li><a class="reference external" href="#id14">字段映射</a></li>
+<li><a class="reference external" href="#id15">表输出</a></li>
+<li><a class="reference external" href="#id16">是否处理过滤</a></li>
+<li><a class="reference external" href="#devicetypeid">查询DeviceTypeID</a></li>
+<li><a class="reference external" href="#id17">查询报警明细信息</a></li>
+<li><a class="reference external" href="#id18">计算是否需要报警</a></li>
+<li><a class="reference external" href="#id19">过滤报警信息</a></li>
+<li><a class="reference external" href="#id20">调用报警服务</a></li>
+</ul>
+</li>
+<li><a class="reference external" href="#id21">流程测试</a><ul>
+<li><a class="reference external" href="#java">JAVA 测试</a></li>
+<li><a class="reference external" href="#net">.NET 测试</a></li>
+</ul>
+</li>
+<li><a class="reference external" href="#id22">注意事项</a></li>
+</ul>
+</li>
+</ul>
+
+            <h4>Previous topic</h4>
+            <p class="topless"><a href="index.html"
+                                  title="previous chapter">建坤演示案例</a></p>
+            <h3>This Page</h3>
+            <ul class="this-page-menu">
+              <li><a href="../../../_sources/case/east/jk/case1.txt"
+                     rel="nofollow">Show Source</a></li>
+            </ul>
+          <div id="searchbox" style="display: none">
+            <h3>Quick search</h3>
+              <form class="search" action="../../../search.html" method="get">
+                <input type="text" name="q" size="18" />
+                <input type="submit" value="Go" />
+                <input type="hidden" name="check_keywords" value="yes" />
+                <input type="hidden" name="area" value="default" />
+              </form>
+              <p class="searchtip" style="font-size: 90%">
+              Enter search terms or a module, class or function name.
+              </p>
+          </div>
+          <script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="id1">
+<h1>建坤演示案例一：世博信号设备控制数据集成<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="id2">
+<h2>场景描述<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<p>简单的说：世博馆有大量的设备，需做设备信号采集，并根据采集数据做出相关策略。</p>
+<p>举个简单的例子：实时采集某设备温度，并且在数据库中定义当该型号设备超过100度需要报警，一旦温度超过则需触发相关请求。具体步骤如下：</p>
+<ul class="simple">
+<li>客户端程序（Delphi）采集到串口数据: deviceId(设备编号),statusValue(状态值),flag(是否需要根据状态值做处理) 其他字段忽略了。</li>
+<li>将数据提交给AESB,目前我们通过服务注册，将流程暴露成webservice，客户端直接调用传递参数</li>
+<li>服务在接收到参数后，启动流程，将传入的数据封装成SDO以供流程其他节点使用</li>
+<li>流程做分支处理，一则直接入库，以保留数据做日后查询，二则根据flag判断是否需要调用业务逻辑处理，若不需要则结束，反之继续</li>
+<li>根据传入的deviceId查询表device_info 查询出当前设备对应的型号：device_type_id</li>
+<li>根据上面查询到的device_type_id，再次查询数据库，查询该型号设备是否需要根据定义数据做相关报警判断处理，查询得到数据：statusValue:判断标准 value_compare_operator:判断符合，也即是 =,&gt;,&lt;等，alarm_flag:是否启动报警，如果不需要则结束，如果需要，则用web service传入的statusValue 和 查询到的 statusVale做value_compare_operator判断，如果为True则调用报警的web service,若False，则忽略。</li>
+</ul>
+</div>
+<div class="section" id="id3">
+<h2>环境准备<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="aesb-designer">
+<h3>AESB 及其 Designer<a class="headerlink" href="#aesb-designer" title="Permalink to this headline">¶</a></h3>
+<p>请从Group上下载0814版AESB,Agent,Designer</p>
+</div>
+<div class="section" id="id4">
+<h3>数据库<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
+<p>任一数据库即可，建立如下三张表：</p>
+<img alt="../../../_images/case1-db.png" src="../../../_images/case1-db.png" />
+<ul class="simple">
+<li>device_value:  记载所有传入的数据</li>
+<li>device_info:   设备信息表，包括设备型号</li>
+<li>device_define: 定义了设备报警相关数据</li>
+</ul>
+<p>简单插入几条记录做测试:</p>
+<div class="highlight-java"><pre>insert into device_info(deviceId,deviceTypeId)values('001','101');
+insert into device_info(deviceId,deviceTypeId)values('002','102');
+
+insert into device_define(deviceTypeId,statusValue,description,alarmFlag,valueCompareOperator)values('101','35','温度',1,'&gt;');
+insert into device_define(deviceTypeId,statusValue,description,alarmFlag,valueCompareOperator)values('102','100','未知',0,'=');</pre>
+</div>
+</div>
+<div class="section" id="id5">
+<h3>客户端模拟测试<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>JAVA环境测试客户端：Apache CFX 2.2.2，请自行下载</li>
+<li>Delphi调用web service测试，请自行下载,在该演示环境中，我们仅用C#测试</li>
+</ul>
+</div>
+</div>
+<div class="section" id="id6">
+<h2>操作详情<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id7">
+<h3>配置环境<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>为节省篇幅，废话少说：释放压缩包，将license拷贝到AESB及其Agent目录下。启动AESB,Agent,Designer.通过Designer新建网络。</li>
+<li>也为了节省时间，本文中部署点统一部署在中心点，请练习时将之部署到不同的节点。</li>
+</ul>
+</div>
+<div class="section" id="id8">
+<h3>流程绘制<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h3>
+<p>首先通过Designer绘制如下流程</p>
+<img alt="../../../_images/case1-process.png" src="../../../_images/case1-process.png" />
+<p>分别配置如下属性</p>
+</div>
+<div class="section" id="id9">
+<h3>全局参数<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h3>
+<p>点击流程空白处，选择属性，切换到《全局参数》</p>
+<ul class="simple">
+<li>import 参数</li>
+</ul>
+<p>新增，名称随便定义，类型默认为WEB,在这里我们选择LOCAL,点击资源选择需要传入参数的xsd。根据我们上面需要交换的数据格式，简单的copy个xsd如下:</p>
+<img alt="../../../_images/case1-xsd.png" src="../../../_images/case1-xsd.png" />
+<ul class="simple">
+<li>形参</li>
+</ul>
+<p>定义一个inVal，类型选择刚刚导入的xsd，确认即可。</p>
+<p>完整配置截图如下：</p>
+<img alt="../../../_images/case1-global.png" src="../../../_images/case1-global.png" />
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p>注意：0814中有个小的BUG,ESB不会将你的xsd拷贝至bpm目录下，你需要根据import后出现的名称，在bpm下建同样的目录，然后将上面import的xsd拷贝进去，如</p>
+<img alt="../../../_images/bug.png" src="../../../_images/bug.png" />
+<p class="last">上面显示的是process4_resource_filesdemo.xsd，那么就在bpm目录下新建process4_resource_files，然后copy demo.xsd到该目录下。</p>
+</div>
+</div>
+<div class="section" id="id10">
+<h3>接收结点<a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h3>
+<p>选择属性，在任务信息中，选择刚刚配置的变量</p>
+<img alt="../../../_images/case1-receive.png" src="../../../_images/case1-receive.png" />
+</div>
+<div class="section" id="id11">
+<h3>赋值结点<a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h3>
+<p>同上，选择任务信息，在表达式中输入:</p>
+<div class="highlight-java"><pre>import java.util.ArrayList;
+import com.apusic.esb.das.common.TableDataObject;
+import com.apusic.esb.das.common.DataObjectWrapper;
+
+define temp = new ArrayList();
+define tdo = new TableDataObject();
+tdo.setName("jkinfo");
+define dow = new DataObjectWrapper("I", inVal);
+tdo.addDataObjectWrapper(dow);
+temp.add(tdo);
+
+_processContext.setLocalVariable('temp', temp);</pre>
+</div>
+<p>上面大体的意思就是将传入的数据封装成一个表名为jkinfo的DO.</p>
+</div>
+<div class="section" id="id12">
+<h3>分支合并<a class="headerlink" href="#id12" title="Permalink to this headline">¶</a></h3>
+<p>请将这两个节点路由选择为and，保证两边度能运行</p>
+</div>
+<div class="section" id="id13">
+<h3>计算当前时间表达式<a class="headerlink" href="#id13" title="Permalink to this headline">¶</a></h3>
+<ul>
+<li><p class="first">表名：因为是程序里面赋值的，所以无法在工具选择，手工输入jkinfo,即上面代码中的setName</p>
+</li>
+<li><p class="first">表达式中输入获取当前时间代码:</p>
+<div class="highlight-java"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">java.text.SimpleDateFormat</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.util.Date</span><span class="o">;</span>
+
+<span class="n">define</span> <span class="n">created_at</span> <span class="o">=</span> <span class="o">(</span><span class="k">new</span> <span class="n">SimpleDateFormat</span><span class="o">(</span><span class="s">&quot;yyyy-mm-dd HH:mm:ss&quot;</span><span class="o">)).</span><span class="na">format</span><span class="o">(</span><span class="k">new</span> <span class="n">Date</span><span class="o">())</span>
+</pre></div>
+</div>
+</li>
+</ul>
+<p>然后导出该变量。</p>
+</div>
+<div class="section" id="id14">
+<h3>字段映射<a class="headerlink" href="#id14" title="Permalink to this headline">¶</a></h3>
+<p>删除该结点，放在这里仅仅是演示的时候告诉客户可以用这个功能。</p>
+</div>
+<div class="section" id="id15">
+<h3>表输出<a class="headerlink" href="#id15" title="Permalink to this headline">¶</a></h3>
+<p>配置数据结果到device_value中，截图如下：</p>
+<img alt="../../../_images/case1-tableout.png" src="../../../_images/case1-tableout.png" />
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<ul class="last simple">
+<li>字段选择只有一个created_at,其他字段需要手工输入</li>
+<li>主键字段请自行输入，这里全勾上了，仅仅测试，没有其他含义</li>
+</ul>
+</div>
+</div>
+<div class="section" id="id16">
+<h3>是否处理过滤<a class="headerlink" href="#id16" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>表名：选择jkinfo</li>
+<li>表达式：根据业务逻辑输入 flag==1</li>
+</ul>
+<img alt="../../../_images/case1-record-filter1.png" src="../../../_images/case1-record-filter1.png" />
+</div>
+<div class="section" id="devicetypeid">
+<h3>查询DeviceTypeID<a class="headerlink" href="#devicetypeid" title="Permalink to this headline">¶</a></h3>
+<p>根据传入的deviceId查询deviceTypeId</p>
+<img alt="../../../_images/case1-data-query1.png" src="../../../_images/case1-data-query1.png" />
+</div>
+<div class="section" id="id17">
+<h3>查询报警明细信息<a class="headerlink" href="#id17" title="Permalink to this headline">¶</a></h3>
+<p>根据上面查询到的DeviceTypeId进一步查询报警信息</p>
+<img alt="../../../_images/case1-data-query2.png" src="../../../_images/case1-data-query2.png" />
+</div>
+<div class="section" id="id18">
+<h3>计算是否需要报警<a class="headerlink" href="#id18" title="Permalink to this headline">¶</a></h3>
+<p>根据业务逻辑，如果alarmFalg为1，则计算传入 stausValue 与 查询结果中 statusValue 做operator比较，得到释放需要调用报警标志位:</p>
+<div class="highlight-java"><div class="highlight"><pre><span class="n">define</span> <span class="n">alarmInvokerFlag</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+
+<span class="k">if</span><span class="o">(</span><span class="n">dataObject</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="s">&quot;aflag&quot;</span><span class="o">)==</span><span class="mi">1</span><span class="o">){</span>
+   <span class="k">if</span><span class="o">(</span><span class="n">dataObject</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="s">&quot;voperator&quot;</span><span class="o">).</span><span class="na">equals</span><span class="o">(</span><span class="s">&quot;&gt;&quot;</span><span class="o">)){</span>
+                <span class="k">if</span><span class="o">(</span><span class="n">Integer</span><span class="o">.</span><span class="na">parseInt</span><span class="o">(</span><span class="n">dataObject</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="s">&quot;statusValue&quot;</span><span class="o">))&gt;</span><span class="n">Integer</span><span class="o">.</span><span class="na">parseInt</span><span class="o">(</span><span class="n">dataObject</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="s">&quot;svalue&quot;</span><span class="o">))){</span>
+                        <span class="n">alarmInvokerFlag</span><span class="o">=</span><span class="mi">1</span><span class="o">;</span>
+                <span class="o">}</span>
+   <span class="o">}</span>
+<span class="o">}</span>
+</pre></div>
+</div>
+<p>导出alarmInvokerFlag变量。</p>
+</div>
+<div class="section" id="id19">
+<h3>过滤报警信息<a class="headerlink" href="#id19" title="Permalink to this headline">¶</a></h3>
+<p>根据上面计算的alarmInvokerFlag做数据过滤，过滤掉那些不需要报警的</p>
+<img alt="../../../_images/case1-record-filter2.png" src="../../../_images/case1-record-filter2.png" />
+</div>
+<div class="section" id="id20">
+<h3>调用报警服务<a class="headerlink" href="#id20" title="Permalink to this headline">¶</a></h3>
+<p>这里我们简单的模拟一个调用web service，并且将参数传入。</p>
+<img alt="../../../_images/case1-service.png" src="../../../_images/case1-service.png" />
+<p>其中http://localhost:6888/demo/echoService?wsdl 为我本机跑的一个echoService，即简单的将得到的数据打印出来。完整代码如下:</p>
+<div class="highlight-java"><div class="highlight"><pre><span class="kn">package</span> <span class="n">com</span><span class="o">.</span><span class="na">apusic</span><span class="o">.</span><span class="na">esb</span><span class="o">.</span><span class="na">demo</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">javax.jws.WebService</span><span class="o">;</span>
+
+<span class="nd">@WebService</span><span class="o">(</span><span class="n">serviceName</span> <span class="o">=</span> <span class="s">&quot;simpleService&quot;</span><span class="o">)</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">SimpleService</span> <span class="o">{</span>
+        <span class="kd">public</span> <span class="n">String</span> <span class="nf">echo</span><span class="o">(</span><span class="n">String</span> <span class="n">text</span><span class="o">)</span> <span class="o">{</span>
+                <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&quot;Got:&quot;</span> <span class="o">+</span> <span class="n">text</span><span class="o">);</span>
+                <span class="k">return</span> <span class="n">text</span><span class="o">;</span>
+        <span class="o">}</span>
+<span class="o">}</span>
+</pre></div>
+</div>
+<p>发布到apusic下即可。</p>
+<p>已经提交了代码，可从这里下载&lt;<a class="reference external" href="http://apusic-esb.googlecode.com/files/demo.war">http://apusic-esb.googlecode.com/files/demo.war</a>&gt;</p>
+</div>
+</div>
+<div class="section" id="id21">
+<h2>流程测试<a class="headerlink" href="#id21" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="java">
+<h3>JAVA 测试<a class="headerlink" href="#java" title="Permalink to this headline">¶</a></h3>
+<p>编写如下代码:</p>
+<div class="highlight-java"><div class="highlight"><pre><span class="kn">package</span> <span class="n">com</span><span class="o">.</span><span class="na">apusic</span><span class="o">.</span><span class="na">esb</span><span class="o">.</span><span class="na">demo</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">org.apache.cxf.endpoint.Client</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.apache.cxf.endpoint.dynamic.DynamicClientFactory</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">ServiceTest</span> <span class="o">{</span>
+        <span class="kd">final</span> <span class="kd">static</span> <span class="n">String</span> <span class="n">DEVICE_ID</span> <span class="o">=</span> <span class="s">&quot;001&quot;</span><span class="o">;</span>
+        <span class="kd">final</span> <span class="kd">static</span> <span class="n">String</span> <span class="n">STATUS_VALUE</span> <span class="o">=</span> <span class="s">&quot;100&quot;</span><span class="o">;</span>
+        <span class="kd">final</span> <span class="kd">static</span> <span class="kt">int</span> <span class="n">FLAG</span> <span class="o">=</span> <span class="mi">1</span><span class="o">;</span>
+
+        <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">Exception</span> <span class="o">{</span>
+                <span class="n">DynamicClientFactory</span> <span class="n">f</span> <span class="o">=</span> <span class="n">DynamicClientFactory</span><span class="o">.</span><span class="na">newInstance</span><span class="o">();</span>
+                <span class="n">Client</span> <span class="n">c</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="na">createClient</span><span class="o">(</span><span class="s">&quot;http://169.254.2.2:5888/services/p4_v1_0?wsdl&quot;</span><span class="o">);</span>
+                <span class="n">c</span><span class="o">.</span><span class="na">invoke</span><span class="o">(</span><span class="s">&quot;runAndWait&quot;</span><span class="o">,</span> <span class="n">String</span><span class="o">.</span><span class="na">format</span><span class="o">(</span><span class="s">&quot;&lt;?xml version=\&quot;1.0\&quot; encoding=\&quot;UTF-8\&quot;?&gt;\n&lt;test1.apusic.com:jkinfo xmlns:xsi=\&quot;http://www.w3.org/2001/XMLSchema-instance\&quot; xmlns:test1.apusic.com=\&quot;http://test1.apusic.com/\&quot; xsi:type=\&quot;test1.apusic.com:jkinfo\&quot;&gt;\n  &lt;test1.apusic.com:deviceId&gt;%s&lt;/test1.apusic.com:deviceId&gt;\n  &lt;test1.apusic.com:statusValue&gt;%s&lt;/test1.apusic.com:statusValue&gt;\n  &lt;test1.apusic.com:flag&gt;%s&lt;/test1.apusic.com:flag&gt;\n&lt;/test1.apusic.com:jkinfo&gt;&quot;</span><span class="o">,</span> <span class="n">DEVICE_ID</span><span class="o">,</span> <span class="n">STATUS_VALUE</span><span class="o">,</span> <span class="n">FLAG</span><span class="o">));</span>
+        <span class="o">}</span>
+<span class="o">}</span>
+</pre></div>
+</div>
+<p>分别测试如下状态：</p>
+<p><strong>FALG</strong></p>
+<ul>
+<li><p class="first">非1时，仅保存数据到device_value</p>
+</li>
+<li><dl class="first docutils">
+<dt>为1时，保存数据到device_value,查询device_type_id,查询device_define</dt>
+<dd><ul class="first last">
+<li><dl class="first docutils">
+<dt>device_define 中的alarmFlag</dt>
+<dd><ul class="first last simple">
+<li>为1时，判断 (STATUS_VALUE,device_define.statusValue,device_define.operator)，为True则调用WebService。能在ws服务器端看到传入参数</li>
+<li>为0时，无调用操作</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+<p>通过以下测试</p>
+<ul class="simple">
+<li>device_id:001,status_value:100,flag:0</li>
+<li>device_id:001,status_value:100,flag:1</li>
+<li>device_id:001,status_value:101,flag:1</li>
+<li>device_id:002,status_value:101,flag:0</li>
+<li>device_id:002,status_value:101,flag:1</li>
+</ul>
+</div>
+<div class="section" id="net">
+<h3>.NET 测试<a class="headerlink" href="#net" title="Permalink to this headline">¶</a></h3>
+<p>这个东西纯粹给客户演示做的,吸引眼球的，没啥好说的了，上个截图吧：</p>
+<img alt="../../../_images/case1-invoker.png" src="../../../_images/case1-invoker.png" />
+<p>更新wsdl地址</p>
+<img alt="../../../_images/case1-invoker-config.png" src="../../../_images/case1-invoker-config.png" />
+</div>
+</div>
+<div class="section" id="id22">
+<h2>注意事项<a class="headerlink" href="#id22" title="Permalink to this headline">¶</a></h2>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p>在0814版本做以上演示中，需注意如下几点：</p>
+<ul class="last">
+<li><p class="first">下载esbadmin.jar&lt;<a class="reference external" href="http://apusic-esb.googlecode.com/files/esbadmin.jar">http://apusic-esb.googlecode.com/files/esbadmin.jar</a>&gt;覆盖到AESB-Designereclipsepluginscom.apusic.studio.esb.admin_6.0.0目录下，不然无法正常调用注册的服务。</p>
+</li>
+<li><p class="first">赋值表达式的节点设置的名称别写错了，不然是无法正常执行以后各结点的:</p>
+<div class="highlight-java"><div class="highlight"><pre><span class="n">tdo</span><span class="o">.</span><span class="na">setName</span><span class="o">(</span><span class="s">&quot;jkinfo&quot;</span><span class="o">);</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">分支、合并节点请选择and</p>
+</li>
+<li><p class="first">流程调用后，会发现大量这样的错误，请忽略这些，这些并非流程执行异常，应该是ESB本身的一些问题:</p>
+<div class="highlight-java"><div class="highlight"><pre><span class="o">[</span><span class="n">apusic</span><span class="o">.</span><span class="na">com</span><span class="o">.</span><span class="na">apusic</span><span class="o">.</span><span class="na">esb</span><span class="o">.</span><span class="na">services</span><span class="o">.</span><span class="na">bpm</span><span class="o">.</span><span class="na">event</span><span class="o">.</span><span class="na">impl</span><span class="o">.</span><span class="na">ProcessRuntimeListener</span><span class="o">]</span> <span class="n">ProcessDBAccessException</span> <span class="n">occur</span> <span class="n">in</span> <span class="n">ProcessRuntimeListener</span> <span class="n">com</span><span class="o">.</span><span class="na">apusic</span><span class="o">.</span><span class="na">esb</span><span class="o">.</span><span class="na">services</span><span class="o">.</span><span class="na">bpm</span><span class="o">.</span><span class="na">exception</span><span class="o">.</span><span class="na">ProcessDBAccessException</span><span class="o">:</span> <span class="n">java</span><span class="o">.</span><span class="na">sql</span><span class="o">.</span><span class="na">SQLException</span><span class="o">:</span> <span class="n">Serialization</span> <span class="nl">failure:</span> <span class="nl">Index:</span> <span class="mi">3</span><span class="o">,</span> <span class="nl">Size:</span> <span class="mi">3</span>
+        <span class="n">at</span> <span class="n">com</span><span class="o">.</span><span class="na">apusic</span><span class="o">.</span><span class="na">esb</span><span class="o">.</span><span class="na">services</span><span class="o">.</span><span class="na">bpm</span><span class="o">.</span><span class="na">repository</span><span class="o">.</span><span class="na">impl</span><span class="o">.</span><span class="na">HSQLDBProcessRuntimeRepository</span><span class="o">.</span><span class="na">storeProcess</span>
+
+<span class="o">[</span><span class="n">apusic</span><span class="o">.</span><span class="na">com</span><span class="o">.</span><span class="na">apusic</span><span class="o">.</span><span class="na">bda</span><span class="o">.</span><span class="na">service</span><span class="o">.</span><span class="na">receiver</span><span class="o">.</span><span class="na">impl</span><span class="o">.</span><span class="na">RecordDataReceiver</span><span class="o">]</span> <span class="n">Unexcepted</span> <span class="n">exception</span><span class="o">.</span><span class="na">java</span><span class="o">.</span><span class="na">lang</span><span class="o">.</span><span class="na">ClassCastException</span><span class="o">:</span> <span class="n">java</span><span class="o">.</span><span class="na">util</span><span class="o">.</span><span class="na">Date</span> <span class="n">cannot</span> <span class="n">be</span> <span class="n">cast</span> <span class="n">to</span> <span class="n">java</span><span class="o">.</span><span class="na">lang</span><span class="o">.</span><span class="na">String</span>
+        <span class="n">at</span> <span class="n">com</span><span class="o">.</span><span class="na">apusic</span><span class="o">.</span><span class="na">esb</span><span class="o">.</span><span class="na">transformer</span><span class="o">.</span><span class="na">string</span><span class="o">.</span><span class="na">StringToTimestampTransformer</span><span class="o">.</span><span class="na">doTransform</span><span class="o">(</span><span class="n">StringToTimestampTransformer</span><span class="o">.</span><span class="na">java</span><span class="o">:</span><span class="mi">28</span><span class="o">)</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="index.html" title="建坤演示案例"
+             >previous</a> |</li>
+        <li><a href="../../../index.html">AESB v6.0 documentation</a> &raquo;</li>
+          <li><a href="../../index.html" >客户案例[演示]集合</a> &raquo;</li>
+          <li><a href="../index.html" >华东客户案例演示集</a> &raquo;</li>
+          <li><a href="index.html" >建坤演示案例</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+      &copy; Copyright 2009, Martin Xu.
+      Last updated on Aug 31, 2009.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 0.6.2.
+    </div>
+  </body>
+</html>
